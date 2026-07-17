@@ -1,9 +1,16 @@
 <!DOCTYPE html>
-<script>
-  const params = new URLSearchParams(window.location.search);
-  const q = params.get('q');
-  if (q) {
-    // Navigate to Gemini with the query in the fragment
-    window.location.href = 'https://gemini.google.com/app#q=' + encodeURIComponent(q);
-  }
-</script>
+<html>
+<head>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const q = params.get('q');
+    if (q) {
+      // The fragment # must be appended to the destination URL
+      window.location.replace('https://gemini.google.com/app#q=' + encodeURIComponent(q));
+    } else {
+      window.location.replace('https://gemini.google.com/app');
+    }
+  </script>
+</head>
+<body>Redirecting...</body>
+</html>
