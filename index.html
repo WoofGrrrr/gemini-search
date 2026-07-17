@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const q = params.get('q');
+  if (q) {
+    localStorage.setItem('fx_query', q);
+    window.location.href = 'https://gemini.google.com/app';
+  }
+</script>
