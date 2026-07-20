@@ -1,18 +1,23 @@
 <!DOCTYPE html>
-<html>
-<head>
-<script>
-  (function () {
-    var params = new URLSearchParams(window.location.search);
-    var query  = params.get('q');
-    var target = 'https://gemini.google.com/';
+  <html>
+  <head>
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var query  = params.get('q');
+      var target = 'https://gemini.google.com/';
 
-    if (query) {
-      window.location.href = target + '?q=' + encodeURIComponent(query);
-    } else {
-      window.location.href = target;
-    }
-  })();
-</script>
-</head>
-</html>
+      if (query) {
+        // Force synchronous location replacement before frame paint
+        window.location.replace(target + '?q=' + encodeURIComponent(query));
+      } else {
+        // If rapid-fire presses send an empty query or duplicate tab, kill the tab immediately
+        window.location.replace(target);
+        setTimeout(function () {
+          window.close();
+        }, 100);
+      }
+    })();
+  </script>
+  </head>
+  </html>
