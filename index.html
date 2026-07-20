@@ -1,20 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Redirecting to Gemini...</title>
-</head>
-<body>
-  <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const query     = urlParams.get('q');
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Redirecting to Gemini...</title>
+    <script>
+      (function () {
+        const params   = new URLSearchParams(window.location.search);
+        const query    = params.get('q');
+        const targetUrl = 'https://gemini.google.com/';
 
-    if (query) {
-      const targetUrl = 'https://gemini.google.com/app?q=' + encodeURIComponent(query);
-      window.location.href = targetUrl;
-    } else {
-      document.body.textContent = 'No query found in the search parameters.';
-    }
-  </script>
-</body>
-</html>
+        if (query) {
+          const dest = targetUrl + '?q=' + encodeURIComponent(query);
+          window.location.replace(dest);
+        } else {
+          window.location.replace(targetUrl);
+        }
+      })();
+    </script>
+  </head>
+  <body>
+  </body>
+  </html>
