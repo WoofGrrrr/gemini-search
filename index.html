@@ -2,31 +2,15 @@
   <html>
   <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="refresh" content="0;url=https://gemini.google.com/">
     <script>
-      function doRedirect() {
+      (function () {
         const params = new URLSearchParams(window.location.search);
         const query  = params.get('q');
-        const target = 'https://gemini.google.com/';
-
         if (query) {
-          window.location.replace(target + '?q=' + encodeURIComponent(query));
-        } else {
-          window.location.replace(target);
+          window.location.replace('https://gemini.google.com/?q=' + encodeURIComponent(query));
         }
-      }
-
-      // Execute immediately synchronously
-      doRedirect();
-
-      // Catch rapid navigation reuse (bfcache / tab reuse)
-      window.addEventListener('pageshow', function (e) {
-        if (e.persisted) {
-          doRedirect();
-        }
-      });
+      })();
     </script>
   </head>
   <body></body>
